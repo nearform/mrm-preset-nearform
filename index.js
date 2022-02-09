@@ -40,7 +40,8 @@ module.exports = function task({ actionName, actionDescription }) {
       },
       homepage: `${repositoryUrl}#readme`,
       scripts: {
-        test: 'jest'
+        test: 'jest',
+        build: 'ncc build src --license licenses.txt'
       }
     })
     .save()
