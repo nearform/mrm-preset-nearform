@@ -1,9 +1,9 @@
 {
-  "name": "bench-template-github-action-mrm-task",
+  "name": "@nearform/bench-template-github-action-mrm-task",
   "version": "1.0.0",
   "description": "An mrm task for setting up a GitHub Action template repository",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -35,5 +35,8 @@
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
+  },
+  "dependencies": {
+    "mrm-core": "^6.1.7"
   }
 }
