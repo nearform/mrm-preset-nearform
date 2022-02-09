@@ -31,6 +31,7 @@ module.exports = function task({ actionName, actionDescription }) {
   json('package.json')
     .merge({
       name: packageName,
+      description: actionDescription,
       main: 'dist/index.js',
       repository: {
         url: `git+${repositoryUrl}.git`
