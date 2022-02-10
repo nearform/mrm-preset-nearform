@@ -1,8 +1,8 @@
 {
-  "name": "@nearform/bench-template-github-action-mrm-task",
+  "name": "@nearform/mrm-preset-bench-template",
   "version": "1.0.0",
-  "description": "An mrm task for setting up a GitHub Action template repository",
-  "main": "index.js",
+  "description": "An mrm tasks preset for setting up a the bench template repository",
+  "main": "config.json",
   "type": "commonjs",
   "scripts": {
     "lint": "eslint .",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nearform/bench-template-github-action-mrm-task.git"
+    "url": "git+https://github.com/nearform/bench-template-mrm-preset.git"
   },
   "keywords": [],
   "author": {
@@ -20,9 +20,9 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nearform/bench-template-github-action-mrm-task/issues"
+    "url": "https://github.com/nearform/bench-template-mrm-preset/issues"
   },
-  "homepage": "https://github.com/nearform/bench-template-github-action-mrm-task#readme",
+  "homepage": "https://github.com/nearform/bench-template-mrm-preset#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
