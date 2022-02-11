@@ -9,11 +9,9 @@ const {
 const path = require('path')
 
 module.exports = function task({ actionName, actionDescription }) {
-  const actionSlug = actionName.toLowerCase().replace(/ /g, '-')
-  const packageName = `github-action-${actionSlug}`
-
-  const repositoryName = path.basename(process.cwd())
-  const repositoryUrl = `https://github.com/nearform/${repositoryName}`
+  template('action.yml', `${__dirname}/templates/action.yml`)
+    .apply({ actionName, actionDescription })
+    .save()
 
   deleteFiles('README.md')
   deleteFiles('index.js')
@@ -27,6 +25,12 @@ module.exports = function task({ actionName, actionDescription }) {
     'src/index.js',
     'dist/package.json'
   ])
+
+  const actionSlug = actionName.toLowerCase().replace(/ /g, '-')
+  const packageName = `github-action-${actionSlug}`
+
+  const repositoryName = path.basename(process.cwd())
+  const repositoryUrl = `https://github.com/nearform/${repositoryName}`
 
   json('package.json')
     .merge({
@@ -60,10 +64,6 @@ module.exports = function task({ actionName, actionDescription }) {
 
   lines('README.md')
     .set([`# ${actionName} GitHub Action`, actionDescription])
-    .save()
-
-  template('action.yml', `${__dirname}/templates/action.yml`)
-    .apply({ actionName, actionDescription })
     .save()
 
   install(['@babel/preset-env', '@vercel/ncc', 'eslint-plugin-jest', 'jest'])
