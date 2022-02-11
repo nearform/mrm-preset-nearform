@@ -1,24 +1,26 @@
-// mock the file system to allow reads from the actual files,
-// but only allow writes to the in-memory one
+// mock the file system to read the task files from disk, everything else from in-memory fs,
+// and only allow writes to in-memory fs
 jest.mock('fs', () => {
-  const { readFileSync, readdirSync, statSync, existsSync } =
-    jest.requireActual('fs')
-
+  const fs = jest.requireActual('fs')
   const memfs = require('memfs')
+
+  const union =
+    fn =>
+    (filename, ...args) => {
+      // always read the task files (siblings to this file) from disk
+      if (filename.includes(__dirname)) {
+        return fs[fn](filename, ...args)
+      }
+      // otherwise read from the in-memory fs
+      return memfs.fs[fn](filename, ...args)
+    }
 
   return {
     ...memfs,
-    readFileSync: (filename, options) => {
-      // if a file exists in the memory fs return it first
-      if (memfs.fs.existsSync(filename)) {
-        return memfs.fs.readFileSync(filename, options)
-      }
-
-      return readFileSync(filename, options)
-    },
-    readdirSync,
-    statSync,
-    existsSync
+    readFileSync: union('readFileSync'),
+    readdirSync: union('readdirSync'),
+    statSync: union('statSync'),
+    existsSync: union('existsSync')
   }
 })
 
