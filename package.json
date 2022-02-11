@@ -1,7 +1,7 @@
 {
-  "name": "@nearform/mrm-preset-bench-template",
+  "name": "mrm-preset-nearform",
   "version": "1.0.0",
-  "description": "An mrm tasks preset for setting up a the bench template repository",
+  "description": "An mrm tasks preset for setting up a NearForm template repository",
   "main": "config.json",
   "type": "commonjs",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nearform/bench-template-mrm-preset.git"
+    "url": "git+https://github.com/nearform/mrm-preset-nearform.git"
   },
   "keywords": [],
   "author": {
@@ -20,9 +20,9 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nearform/bench-template-mrm-preset/issues"
+    "url": "https://github.com/nearform/mrm-preset-nearform/issues"
   },
-  "homepage": "https://github.com/nearform/bench-template-mrm-preset#readme",
+  "homepage": "https://github.com/nearform/mrm-preset-nearform#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",

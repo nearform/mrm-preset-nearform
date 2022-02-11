@@ -1,5 +1,5 @@
-# Bench Template MRM Preset
-This a tasks preset for the [mrm](https://mrm.js.org/) library, used to transform the [base bench template repository](https://github.com/nearform/bench-template)
+# NearForm MRM Preset
+This a tasks preset for the [mrm](https://mrm.js.org/) library, used to transform a repository
 into one of the following: 
 
 1. `GitHub Action` project, by adding the following features:
@@ -12,7 +12,7 @@ into one of the following:
 Simply run the following command in your project's root:
 
 ```shell
-npx mrm $TASK_NAME --preset @nearform/bench-template --interactive
+npx mrm $TASK_NAME --preset nearform --interactive
 ```
 
 Where `$TASK_NAME` is one of the following: 
@@ -27,16 +27,16 @@ Assuming that the repository you're setting up is checked out next to this proje
 ```
 Users
   yourusername
-    bench-template-mrm-preset
-    repository-from-bench-template
+    mrm-preset-nearform
+    your-repository
 ```
 and that your current working directory is:
 ```
-/Users/yourusername/repository-from-bench-template
+/Users/yourusername/your-repository
 ```
 
 the easiest way to test the local version of this task is to reference it directly from the file system:
 
 ```shell
-npx mrm github-action --preset ${PWD}/../bench-template-mrm-preset --interactive
+npx mrm $TASK_NAME --preset ${PWD}/../mrm-preset-nearform --interactive
 ```
