@@ -17,7 +17,8 @@ npx mrm $TASK_NAME --preset nearform --interactive
 
 Where `$TASK_NAME` is one of the following: 
 1. `github-action`.
-2. ...
+2. `fastify-plugin`
+3. `aws-cdk`
 
 If this is the first time you're using `mrm` you will be asked for permission to install it, and the interactive setup 
 will begin.
