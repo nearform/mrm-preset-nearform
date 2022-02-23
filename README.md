@@ -10,7 +10,6 @@ into one of the following:
     - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
     - tests with [jest](https://jestjs.io/)
 3. `Aws CDK` aws cdk project
-    - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
     - tests with [tap](https://github.com/tapjs/node-tap)
 
 ## Using this task
