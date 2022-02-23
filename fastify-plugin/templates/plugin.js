@@ -1,11 +1,11 @@
-const fp = require('fastify-plugin')
+import fp from 'fastify-plugin'
 
 function plugin(fastify, opts, next) {
   // your plugin code
   next()
 }
 
-module.exports = fp(plugin, {
+export default fp(plugin, {
   fastify: '${fastifyVersion}',
   name: '${packageName}'
 })

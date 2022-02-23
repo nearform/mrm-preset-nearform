@@ -1,6 +1,4 @@
-'use strict'
-
-const fp = require('.')
+import fp from '.'
 
 describe('fastify-plugin', () => {
   it('should plugin be a function', () => {

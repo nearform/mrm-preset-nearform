@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "An mrm tasks preset for setting up a NearForm template repository",
   "main": "config.json",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
