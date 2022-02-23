@@ -6,7 +6,12 @@ into one of the following:
     - an automatic GitHub release action
     - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
     - tests with [jest](https://jestjs.io/) along with necessary linting changes and transpilation setup
-2. ...
+2. `Fastify Plugin` Fastify plugin
+    - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
+    - tests with [jest](https://jestjs.io/)
+3. `Aws CDK` aws cdk project
+    - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
+    - tests with [tap](https://github.com/tapjs/node-tap)
 
 ## Using this task
 Simply run the following command in your project's root:
