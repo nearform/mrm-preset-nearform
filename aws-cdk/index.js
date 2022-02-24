@@ -53,7 +53,7 @@ module.exports = function task({ projectName, projectDescription }) {
       homepage: `${repositoryUrl}#readme`,
       scripts: {
         build:
-          'esbuild src/index.js --bundle --minify --platform=node --target=node16 --outbase=src --outdir=dist',
+          'esbuild src/index.js --bundle --minify --platform=node --target=node14 --outbase=src --outdir=dist',
         test: 'tap',
         cdk: 'cdk',
         deploy: 'npm run build && cdk deploy',
@@ -96,6 +96,6 @@ module.exports.parameters = {
   projectDescription: {
     type: 'input',
     message: 'Project description',
-    default: 'This is a aws lambda project'
+    default: 'This is a aws-cdk project'
   }
 }

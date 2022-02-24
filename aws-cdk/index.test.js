@@ -121,4 +121,23 @@ describe('aws-cdk task', () => {
       ])
     )
   })
+
+  it('sets up the build script and it should match with node14', async () => {
+    task(await getTaskOptions(task, false, taskOptions))
+
+    const files = fs.vol.toJSON()
+    const filePath = getFilePath('.husky/pre-commit')
+    const packagejson = JSON.parse(files[getFilePath('package.json')])
+
+    expect(packagejson.scripts.build).toMatch('--target=node14')
+    expect(files[filePath]).not.toBeUndefined()
+  })
+
+  it('should .nvmrc match with node14', async () => {
+    task(await getTaskOptions(task, false, taskOptions))
+
+    const files = fs.vol.toJSON()
+    const filePath = getFilePath('.nvmrc')
+    expect(files[filePath]).toMatch('14')
+  })
 })
