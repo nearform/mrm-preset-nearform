@@ -30,6 +30,7 @@ jest.mock('mrm-core/src/util/log', () => ({
 }))
 
 const fs = require('fs')
+const { install } = require('mrm-core/src/npm')
 const { getTaskOptions } = require('mrm')
 
 const task = require('./index')
@@ -47,7 +48,7 @@ beforeEach(() => {
   fs.vol.reset()
 })
 
-describe('github-action task', () => {
+describe('aws-cdk task', () => {
   it('creates a aws-cdk project with a project name and description from parameters', async () => {
     task(await getTaskOptions(task, false, taskOptions))
 
@@ -100,6 +101,24 @@ describe('github-action task', () => {
           'cdk.json'
         ].map(filename => getFilePath(filename))
       )
+    )
+  })
+
+  it('should install correctly dev dependencies', async () => {
+    task(await getTaskOptions(task, false, taskOptions))
+
+    expect(install).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        'aws-cdk',
+        'eslint',
+        'esbuild',
+        'eslint-config-prettier',
+        'eslint-plugin-prettier',
+        'husky',
+        'lint-staged',
+        'tap',
+        'prettier'
+      ])
     )
   })
 })
