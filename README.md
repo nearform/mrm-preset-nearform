@@ -1,4 +1,6 @@
 # NearForm MRM Preset
+[![NPM version](https://img.shields.io/badge/npm-v1.1.1-blue)](https://www.npmjs.com/package/mrm-preset-nearform)
+
 This a tasks preset for the [mrm](https://mrm.js.org/) library, used to transform a repository
 into one of the following: 
 
