@@ -1,0 +1,13 @@
+.env
+.nyc_output
+.eslintcache
+
+# Package directories
+node_modules
+
+# Build output directory
+dist
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out

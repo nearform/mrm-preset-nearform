@@ -6,7 +6,12 @@ into one of the following:
     - an automatic GitHub release action
     - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
     - tests with [jest](https://jestjs.io/) along with necessary linting changes and transpilation setup
-2. ...
+2. `Fastify Plugin` Fastify plugin
+    - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
+    - tests with [jest](https://jestjs.io/)
+3. `Aws CDK` aws cdk project
+    - it uses `aws-cdk-lib` to define AWS resources using code.
+    - tests with [tap](https://github.com/tapjs/node-tap)
 
 ## Using this task
 Simply run the following command in your project's root:
@@ -17,7 +22,8 @@ npx mrm $TASK_NAME --preset nearform --interactive
 
 Where `$TASK_NAME` is one of the following: 
 1. `github-action`.
-2. ...
+2. `fastify-plugin`
+3. `aws-cdk`
 
 If this is the first time you're using `mrm` you will be asked for permission to install it, and the interactive setup 
 will begin.
