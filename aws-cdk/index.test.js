@@ -90,8 +90,13 @@ describe('aws-cdk task', () => {
       expect.arrayContaining(
         [
           '.github/workflows/ci.yml',
+          '.github/workflows/cd.yml',
           '.github/dependabot.yml',
+          'lib/cdk-stack.js',
+          'src/index.js',
+          'test/cdk.test.js',
           '.env.sample',
+          '.eslintrc',
           '.eslintignore',
           '.gitignore',
           '.npmignore',

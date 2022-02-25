@@ -1,5 +1,6 @@
 import { test } from 'tap'
 
 test('CDK test', t => {
-  t.pass()
+  t.pass('pass')
+  t.end()
 })
