@@ -25,8 +25,13 @@ module.exports = function task({ projectName, projectDescription }) {
   deleteFiles('index.js')
   copyFiles(`${__dirname}/static`, [
     '.github/workflows/ci.yml',
+    '.github/workflows/cd.yml',
     '.github/dependabot.yml',
+    './lib/cdk-stack.js',
+    './src/index.js',
+    './test/cdk.test.js',
     '.env.sample',
+    '.eslintrc',
     '.eslintignore',
     '.gitignore',
     '.npmignore',
@@ -44,6 +49,7 @@ module.exports = function task({ projectName, projectDescription }) {
       name: projectSlug,
       description: projectDescription,
       main: 'dist/index.js',
+      type: 'module',
       repository: {
         url: `git+${repositoryUrl}.git`
       },
@@ -82,6 +88,7 @@ module.exports = function task({ projectName, projectDescription }) {
     'husky',
     'lint-staged',
     'tap',
+    '@istanbuljs/esm-loader-hook',
     'prettier'
   ])
   install(['aws-cdk-lib', 'constructs'], { dev: false })
