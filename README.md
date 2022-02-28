@@ -1,4 +1,6 @@
 # NearForm MRM Preset
+[![NPM version](https://img.shields.io/badge/npm-v1.1.1-blue)](https://www.npmjs.com/package/mrm-preset-nearform)
+
 This a tasks preset for the [mrm](https://mrm.js.org/) library, used to transform a repository
 into one of the following: 
 
@@ -10,7 +12,7 @@ into one of the following:
     - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
     - tests with [jest](https://jestjs.io/)
 3. `Aws CDK` aws cdk project
-    - it uses `aws-cdk-lib` to define AWS resources using code.
+    - it uses [aws-cdk-lib](https://aws.amazon.com/cdk/) to define AWS resources using code.
     - tests with [tap](https://github.com/tapjs/node-tap)
 
 ## Using this task
