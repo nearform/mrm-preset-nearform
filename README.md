@@ -1,4 +1,6 @@
 # NearForm MRM Preset
+
+[![Continuous Integration](https://github.com/nearform/mrm-preset-nearform/actions/workflows/ci.yml/badge.svg)](https://github.com/nearform/mrm-preset-nearform/actions/workflows/ci.yml)
 [![NPM version](https://img.shields.io/npm/v/mrm-preset-nearform)](https://www.npmjs.com/package/mrm-preset-nearform)
 
 This a tasks preset for the [mrm](https://mrm.js.org/) library, used to transform a repository
