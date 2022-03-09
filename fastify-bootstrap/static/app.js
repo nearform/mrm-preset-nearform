@@ -6,9 +6,9 @@ const Env = require('fastify-env')
 const Cors = require('fastify-cors')
 const S = require('fluent-json-schema')
 
-async function App(fastify, opts) {
+async function App (fastify, opts) {
   fastify.register(Env, {
-    schema: S.object().prop('NODE_ENV', S.string().required()).valueOf()
+    schema: S.object().prop('NODE_ENV', S.string().default('development')).valueOf()
   })
 
   // Enables the use of CORS in a Fastify application.

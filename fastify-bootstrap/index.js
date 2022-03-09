@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = function task({
   appName,
   appDescription,
-  standAloneApplication
+  isStandAloneApplication
 }) {
   const appSlug = appName.toLowerCase().replace(/ /g, '-')
 
@@ -12,6 +12,7 @@ module.exports = function task({
   deleteFiles('app.js')
   copyFiles(`${__dirname}/static`, [
     '.github/workflows/ci.yml',
+    '.github/dependabot.yml',
     'plugins/sensible.js',
     'plugins/support.js',
     'routes/root.js',
@@ -21,14 +22,12 @@ module.exports = function task({
     'test/routes/example.test.js',
     'test/routes/root.test.js',
     '.env.template',
-    '.eslintrc',
     '.nvmrc',
-    '.prettierrc',
     '.taprc',
     'app.js'
   ])
 
-  if (standAloneApplication) {
+  if (isStandAloneApplication) {
     copyFiles(`${__dirname}/static`, 'server.js')
   }
 
@@ -49,16 +48,16 @@ module.exports = function task({
       homepage: `${repositoryUrl}#readme`,
       scripts: {
         test: 'tap',
-        lint: 'eslint .',
-        'lint:fix': 'eslint . --fix',
-        ...(standAloneApplication
+        lint: 'standard',
+        'lint:fix': 'standard --fix',
+        ...(isStandAloneApplication
           ? {
               dev: 'node server.js',
-              build: 'ncc build server.js'
+              build: 'ncc build server.js --license licenses.txt'
             }
           : {
               dev: 'fastify start -w -l info -P app.js',
-              build: 'ncc build app.js'
+              build: 'ncc build app.js --license licenses.txt'
             })
       }
     })
@@ -69,29 +68,19 @@ module.exports = function task({
       'node_modules',
       'dist',
       '.env',
-      '.eslintcache',
       'coverage',
-      '.nyc_output'
+      '.nyc_output',
+      'logs',
+      'vscode'
     ])
     .save()
   lines('.husky/pre-commit').add(['npm run build && npm run test']).save()
-  lines('.eslintignore').add(['dist', 'node_modules']).save()
 
   lines('README.md')
     .set([`# ${appSlug}`, appDescription])
     .save()
 
-  install([
-    'eslint',
-    'eslint-config-prettier',
-    'eslint-plugin-prettier',
-    'husky',
-    'lint-staged',
-    'tap',
-    'prettier',
-    '@vercel/ncc',
-    '@istanbuljs/esm-loader-hook'
-  ])
+  install(['husky', 'tap', 'standard', '@vercel/ncc'])
   install(
     [
       'fastify',
@@ -120,7 +109,7 @@ module.exports.parameters = {
     message: 'Description',
     default: 'This is the description'
   },
-  standAloneApplication: {
+  isStandAloneApplication: {
     type: 'confirm',
     message: 'Turn the application into a standalone executable?',
     default: false

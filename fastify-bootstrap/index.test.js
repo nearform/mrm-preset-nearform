@@ -80,6 +80,7 @@ describe('fastify-bootstrap task', () => {
       expect.arrayContaining(
         [
           '.github/workflows/ci.yml',
+          '.github/dependabot.yml',
           'plugins/sensible.js',
           'plugins/support.js',
           'routes/root.js',
@@ -88,9 +89,7 @@ describe('fastify-bootstrap task', () => {
           'test/routes/example.test.js',
           'test/routes/root.test.js',
           '.env.template',
-          '.eslintrc',
           '.nvmrc',
-          '.prettierrc',
           '.taprc',
           'app.js'
         ].map(filename => getFilePath(filename))
@@ -102,16 +101,7 @@ describe('fastify-bootstrap task', () => {
     task(await getTaskOptions(task, false, taskOptions))
 
     expect(install).toHaveBeenCalledWith(
-      expect.arrayContaining([
-        'eslint',
-        'eslint-config-prettier',
-        'eslint-plugin-prettier',
-        'husky',
-        'lint-staged',
-        'tap',
-        '@istanbuljs/esm-loader-hook',
-        'prettier'
-      ])
+      expect.arrayContaining(['husky', 'tap', 'standard', '@vercel/ncc'])
     )
   })
 })

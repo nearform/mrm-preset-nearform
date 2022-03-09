@@ -16,6 +16,10 @@ into one of the following:
 3. `Aws CDK` aws cdk project
     - it uses [aws-cdk-lib](https://aws.amazon.com/cdk/) to define AWS resources using code.
     - tests with [tap](https://github.com/tapjs/node-tap)
+4. `Fastify Application` it adds the following features:
+    - it uses [@vercel/ncc](https://github.com/vercel/ncc) to compile the application.
+    - tests with [tap](https://github.com/tapjs/node-tap)
+    - it uses [fastify-cli](https://github.com/fastify/fastify-cli) to run a non-standalone applcation
 
 ## Using this task
 Simply run the following command in your project's root:
@@ -28,6 +32,7 @@ Where `$TASK_NAME` is one of the following:
 1. `github-action`.
 2. `fastify-plugin`
 3. `aws-cdk`
+4. `fastify-bootstrap`
 
 If this is the first time you're using `mrm` you will be asked for permission to install it, and the interactive setup 
 will begin.
