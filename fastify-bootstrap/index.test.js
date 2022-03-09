@@ -48,7 +48,7 @@ beforeEach(() => {
   fs.vol.reset()
 })
 
-describe('aws-cdk task', () => {
+describe('fastify-bootstrap task', () => {
   it('updates package.json', async () => {
     task(await getTaskOptions(task, false, taskOptions))
 
@@ -80,7 +80,6 @@ describe('aws-cdk task', () => {
       expect.arrayContaining(
         [
           '.github/workflows/ci.yml',
-          '.vscode/lauch.json',
           'plugins/sensible.js',
           'plugins/support.js',
           'routes/root.js',
@@ -105,7 +104,6 @@ describe('aws-cdk task', () => {
     expect(install).toHaveBeenCalledWith(
       expect.arrayContaining([
         'eslint',
-        'rollout',
         'eslint-config-prettier',
         'eslint-plugin-prettier',
         'husky',

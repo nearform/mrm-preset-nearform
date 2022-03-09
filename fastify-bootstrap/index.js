@@ -12,7 +12,6 @@ module.exports = function task({
   deleteFiles('app.js')
   copyFiles(`${__dirname}/static`, [
     '.github/workflows/ci.yml',
-    '.vscode/lauch.json',
     'plugins/sensible.js',
     'plugins/support.js',
     'routes/root.js',
