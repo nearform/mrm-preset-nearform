@@ -22,7 +22,9 @@ module.exports = function task({
     'test/routes/example.test.js',
     'test/routes/root.test.js',
     '.env.template',
+    '.eslintrc',
     '.nvmrc',
+    '.prettierrc',
     '.taprc',
     'app.js'
   ])
@@ -48,8 +50,8 @@ module.exports = function task({
       homepage: `${repositoryUrl}#readme`,
       scripts: {
         test: 'tap',
-        lint: 'standard',
-        'lint:fix': 'standard --fix',
+        lint: 'eslint .',
+        'lint:fix': 'eslint . --fix',
         ...(isStandAloneApplication
           ? {
               dev: 'node server.js',
@@ -59,6 +61,9 @@ module.exports = function task({
               dev: 'fastify start -w -l info -P app.js',
               build: 'ncc build app.js --license licenses.txt'
             })
+      },
+      'lint-staged': {
+        '*.js': 'eslint --cache --fix'
       }
     })
     .save()
@@ -74,13 +79,24 @@ module.exports = function task({
       'vscode'
     ])
     .save()
+
   lines('.husky/pre-commit').add(['npm run build && npm run test']).save()
+  lines('.eslintignore').add(['dist', 'node_modules']).save()
 
   lines('README.md')
     .set([`# ${appSlug}`, appDescription])
     .save()
 
-  install(['husky', 'tap', 'standard', '@vercel/ncc'])
+  install([
+    'eslint',
+    'eslint-config-prettier',
+    'eslint-plugin-prettier',
+    'husky',
+    'lint-staged',
+    'tap',
+    'prettier',
+    '@vercel/ncc'
+  ])
   install(
     [
       'fastify',

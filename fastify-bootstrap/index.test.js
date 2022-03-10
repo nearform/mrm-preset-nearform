@@ -101,7 +101,15 @@ describe('fastify-bootstrap task', () => {
     task(await getTaskOptions(task, false, taskOptions))
 
     expect(install).toHaveBeenCalledWith(
-      expect.arrayContaining(['husky', 'tap', 'standard', '@vercel/ncc'])
+      expect.arrayContaining([
+        'eslint',
+        'eslint-config-prettier',
+        'eslint-plugin-prettier',
+        'husky',
+        'lint-staged',
+        'tap',
+        'prettier'
+      ])
     )
   })
 })
