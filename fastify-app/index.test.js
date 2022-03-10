@@ -48,7 +48,7 @@ beforeEach(() => {
   fs.vol.reset()
 })
 
-describe('fastify-bootstrap task', () => {
+describe('fastify-app task', () => {
   it('updates package.json', async () => {
     task(await getTaskOptions(task, false, taskOptions))
 
@@ -90,7 +90,6 @@ describe('fastify-bootstrap task', () => {
           'test/routes/root.test.js',
           '.env.template',
           '.nvmrc',
-          '.taprc',
           'app.js'
         ].map(filename => getFilePath(filename))
       )
@@ -107,7 +106,6 @@ describe('fastify-bootstrap task', () => {
         'eslint-plugin-prettier',
         'husky',
         'lint-staged',
-        'tap',
         'prettier'
       ])
     )

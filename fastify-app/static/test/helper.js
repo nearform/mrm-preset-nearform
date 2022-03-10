@@ -9,11 +9,11 @@ const AppPath = path.join(__dirname, '..', 'app.js')
 Fill in this config with all the configurations
 needed for testing the application
 */
-function config () {
+function config() {
   return {}
 }
 
-async function build (t) {
+async function build(t) {
   const argv = [AppPath]
   const app = await buildApplication(argv, config())
 

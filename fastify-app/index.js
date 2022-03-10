@@ -25,7 +25,6 @@ module.exports = function task({
     '.eslintrc',
     '.nvmrc',
     '.prettierrc',
-    '.taprc',
     'app.js'
   ])
 
@@ -52,15 +51,9 @@ module.exports = function task({
         test: 'tap',
         lint: 'eslint .',
         'lint:fix': 'eslint . --fix',
-        ...(isStandAloneApplication
-          ? {
-              dev: 'node server.js',
-              build: 'ncc build server.js --license licenses.txt'
-            }
-          : {
-              dev: 'fastify start -w -l info -P app.js',
-              build: 'ncc build app.js --license licenses.txt'
-            })
+        dev: isStandAloneApplication
+          ? 'node server.js'
+          : 'fastify start -w -l info -P app.js'
       },
       'lint-staged': {
         '*.js': 'eslint --cache --fix'
@@ -80,8 +73,8 @@ module.exports = function task({
     ])
     .save()
 
-  lines('.husky/pre-commit').add(['npm run build && npm run test']).save()
-  lines('.eslintignore').add(['dist', 'node_modules']).save()
+  lines('.husky/pre-commit').add(['npm run test']).save()
+  lines('.eslintignore').add(['node_modules']).save()
 
   lines('README.md')
     .set([`# ${appSlug}`, appDescription])
@@ -91,11 +84,10 @@ module.exports = function task({
     'eslint',
     'eslint-config-prettier',
     'eslint-plugin-prettier',
+    'prettier',
     'husky',
     'lint-staged',
-    'tap',
-    'prettier',
-    '@vercel/ncc'
+    'tap'
   ])
   install(
     [

@@ -6,7 +6,7 @@ const Fastify = require('fastify')
 const closeWithGrace = require('close-with-grace')
 
 const app = Fastify({
-  logger: true
+  logger: true,
 })
 
 const appService = require('./app.js')
