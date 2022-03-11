@@ -13,7 +13,10 @@ into one of the following:
 2. `Fastify Plugin` Fastify plugin
     - bundling on commit, set up with [@vercel/ncc](https://github.com/vercel/ncc)
     - tests with [jest](https://jestjs.io/)
-3. `Aws CDK` aws cdk project
+3. `Fastify Application` it adds the following features:
+    - tests with [tap](https://github.com/tapjs/node-tap)
+    - it uses [fastify-cli](https://github.com/fastify/fastify-cli) to run a non-standalone application
+4. `Aws CDK` aws cdk project
     - it uses [aws-cdk-lib](https://aws.amazon.com/cdk/) to define AWS resources using code.
     - tests with [tap](https://github.com/tapjs/node-tap)
 
@@ -27,7 +30,9 @@ npx mrm $TASK_NAME --preset nearform --interactive
 Where `$TASK_NAME` is one of the following: 
 1. `github-action`.
 2. `fastify-plugin`
-3. `aws-cdk`
+3. `fastify-app`
+4. `aws-cdk`
+
 
 If this is the first time you're using `mrm` you will be asked for permission to install it, and the interactive setup 
 will begin.
