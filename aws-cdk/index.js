@@ -33,7 +33,6 @@ module.exports = function task({ projectName, projectDescription }) {
     '.env.sample',
     '.eslintrc',
     '.eslintignore',
-    '.gitignore',
     '.npmignore',
     '.nvmrc',
     '.prettierrc',
@@ -74,6 +73,17 @@ module.exports = function task({ projectName, projectDescription }) {
     .save()
 
   lines('.husky/pre-commit').add(['npm run build && git add dist']).save()
+
+  lines('.gitignore')
+    .add([
+      '.env',
+      'nyc_output',
+      '.eslintcache',
+      'node_modules',
+      '.cdk.staging',
+      'cdk.out'
+    ])
+    .save()
 
   lines('README.md')
     .set([`# ${projectSlug}`, projectDescription])
