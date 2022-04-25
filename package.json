@@ -41,6 +41,6 @@
     "*.{js,jsx}": "eslint --cache --fix"
   },
   "dependencies": {
-    "mrm-core": "^6.1.7"
+    "mrm-core": "^7.0.0"
   }
 }
